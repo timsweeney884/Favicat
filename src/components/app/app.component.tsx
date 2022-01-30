@@ -1,22 +1,23 @@
 import { Navigate, Routes, Route, BrowserRouter } from 'react-router-dom';
+import { APP_ROUTES } from '../../constants/app-routes.constants';
 import { Home } from '../../pages/home/home.component';
-import { Test } from '../../pages/test/test.component';
 import { Upload } from '../../pages/upload/upload.component';
+import { Layout } from '../layout/layout.component';
 
 import './app.module.css';
 
 export const App = () => {
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
+      <Layout>
+        <Routes>
+          <Route path={APP_ROUTES.HOME.path} element={<Home />} />
 
-        <Route path="/upload" element={<Upload />} />
+          <Route path={APP_ROUTES.UPLOAD.path} element={<Upload />} />
 
-        <Route path="/test" element={<Test />} />
-
-        <Route path="*" element={<Navigate to="/" />} />
-      </Routes>
+          <Route path="*" element={<Navigate to="/" />} />
+        </Routes>
+      </Layout>
     </BrowserRouter>
   );
 };

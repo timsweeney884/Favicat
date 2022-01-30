@@ -1,11 +1,11 @@
 import { BASE_URL, API_KEY } from '../../constants/api.constants';
-import { ISearchParams } from '../../types/search-params';
+import { SearchParams } from '../../types/search-params';
 import { getQueryString } from '../../utils/get-query-string/get-query-string';
 
 interface IMakeApiRequest {
   path: string;
   method?: 'GET' | 'POST';
-  searchParams?: ISearchParams;
+  searchParams?: SearchParams;
 }
 
 export const makeApiRequest = <T>({

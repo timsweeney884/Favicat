@@ -1,3 +1,3 @@
-export interface ISearchParams {
+export interface SearchParams {
   [key: string]: string | number;
 }
