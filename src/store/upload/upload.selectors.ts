@@ -5,7 +5,5 @@ const uploadState = (state: RootState) => state.upload;
 
 export const getLoading = createSelector(
   uploadState,
-  (images) => images.loading
+  (upload) => upload.loading
 );
-
-export const getError = createSelector(uploadState, (images) => images.error);

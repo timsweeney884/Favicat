@@ -9,10 +9,12 @@ export const fetchImages = createAsyncThunk(
     const isPublic = imageType === 'Public';
     const path = imageType === 'Public' ? 'images/search' : 'images';
 
-    const images = await makeApiRequest<ApiImage[]>({
+    const response: Response = await makeApiRequest({
       path,
       searchParams: { limit: 20 },
     });
+
+    const images: ApiImage[] = await response.json();
 
     return {
       images,

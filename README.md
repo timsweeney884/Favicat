@@ -1,6 +1,7 @@
 Todo
 
 - style upload
+- centralise font sizes
 - add error from api for upload
 - double check uploading images works as expected
 - build out acceptance criteria

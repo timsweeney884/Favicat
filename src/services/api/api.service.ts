@@ -9,12 +9,12 @@ interface IMakeApiRequest {
   searchParams?: SearchParams;
 }
 
-export const makeApiRequest = <T>({
+export const makeApiRequest = ({
   path,
   method = 'GET',
   searchParams,
   body,
-}: IMakeApiRequest): Promise<T> => {
+}: IMakeApiRequest): Promise<Response> => {
   const queryString = getQueryString(searchParams);
   const requestUrl = `${BASE_URL}/${path}${queryString}`;
 
@@ -24,5 +24,7 @@ export const makeApiRequest = <T>({
       'x-api-key': API_KEY,
     },
     body,
-  }).then((response) => response.json());
+  }).then((response) => {
+    return response;
+  });
 };

@@ -9,12 +9,17 @@
 .fileInputLabel {
   display: inline-block;
   cursor: pointer;
-  font-size: 2rem;
   color: var(--color-coral);
   border: 3px solid var(--color-coral);
   border-radius: var(--border-radius-s);
   background-color: var(--color-beige-light);
-  padding: var(--spacing-m);
+  padding: var(--spacing-m) var(--spacing-m) var(--spacing-s);
+}
+
+.labelText {
+  display: block;
+  font-weight: 700;
+  font-size: 1.5rem;
 }
 
 .formContent {
@@ -28,4 +33,14 @@
   border-radius: var(--border-radius-m);
   box-shadow: var(--box-shadow);
   margin: 0 auto var(--spacing-l);
+}
+
+@media (min-width: 576px) {
+  .gridColumn {
+    width: calc(100% / 2);
+  }
+
+  .labelText {
+    font-size: 2.5rem;
+  }
 }

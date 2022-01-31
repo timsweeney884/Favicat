@@ -1,4 +1,5 @@
 import { SyntheticEvent, useRef, useState } from 'react';
+import { MdUpload } from 'react-icons/md';
 import { Button } from '../button/button.component';
 import styles from './file-input.module.css';
 
@@ -36,7 +37,10 @@ export const FileInput: React.FC<IFileInput> = ({ onUpload }) => {
       <div className={styles.formContent}>
         <div className={styles.fileInputLabelContainer}>
           <label className={styles.fileInputLabel} htmlFor="file-upload">
-            Click here to choose a file
+            <span className={styles.labelText}>
+              Click here to choose a file
+            </span>
+            <MdUpload size={50} color="#f78764" />
             <input
               onChange={onChange}
               className={styles.fileInput}
