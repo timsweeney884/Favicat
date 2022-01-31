@@ -1,0 +1,28 @@
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 calc(var(--spacing-s) - var(--spacing-s) * 2);
+}
+
+.gridColumn {
+  width: 100%;
+  padding: var(--spacing-s);
+}
+
+@media (min-width: 576px) {
+  .gridColumn {
+    width: calc(100% / 2);
+  }
+}
+
+@media (min-width: 767px) {
+  .gridColumn {
+    width: calc(100% / 3);
+  }
+}
+
+@media (min-width: 992px) {
+  .gridColumn {
+    width: calc(100% / 4);
+  }
+}

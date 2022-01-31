@@ -1,0 +1,35 @@
+.imagePanel {
+  position: relative;
+  padding-bottom: 100%;
+  border-radius: var(--border-radius-m);
+  background-size: cover;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  box-shadow: var(--box-shadow);
+}
+
+.imagePanel:before {
+  --spinner-size: 30px;
+  display: block;
+  content: '';
+  z-index: -1;
+  position: absolute;
+  width: var(--spinner-size);
+  height: var(--spinner-size);
+  top: calc(50% - var(--spinner-size) / 2);
+  left: calc(50% - var(--spinner-size) / 2);
+  border: 3px solid var(--color-coral);
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: 1s linear infinite spin;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}

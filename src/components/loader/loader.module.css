@@ -1,0 +1,52 @@
+.loaderContainer {
+  text-align: center;
+}
+
+.loaderDot {
+  --loader-dot-size: 10px;
+  display: inline-block;
+  margin: 0 var(--spacing-s);
+  height: var(--loader-dot-size);
+  width: var(--loader-dot-size);
+  background-color: var(--color-coral);
+  border-radius: 50%;
+  animation-duration: 1s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.loaderDotOne {
+  animation-name: bounce;
+}
+
+.loaderDotTwo {
+  animation-name: bounce;
+  animation-delay: 0.25s;
+}
+
+.loaderDotThree {
+  animation-name: bounce;
+  animation-delay: 0.5s;
+}
+
+@keyframes bounce {
+  0% {
+    transform: translateY(0%);
+  }
+
+  25% {
+    transform: translateY(100%);
+  }
+
+  50% {
+    transform: translateY(100%);
+  }
+
+  75% {
+    transform: translateY(100%);
+  }
+
+  100% {
+    transform: translateY(0%);
+  }
+}

@@ -1,6 +1,7 @@
 import { Navigate, Routes, Route, BrowserRouter } from 'react-router-dom';
 import { APP_ROUTES } from '../../constants/app-routes.constants';
 import { Home } from '../../pages/home/home.component';
+import { MoreCats } from '../../pages/more-cats/more-cats.component';
 import { Upload } from '../../pages/upload/upload.component';
 import { Layout } from '../layout/layout.component';
 
@@ -14,6 +15,8 @@ export const App = () => {
           <Route path={APP_ROUTES.HOME.path} element={<Home />} />
 
           <Route path={APP_ROUTES.UPLOAD.path} element={<Upload />} />
+
+          <Route path={APP_ROUTES.MORE_CATS.path} element={<MoreCats />} />
 
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>

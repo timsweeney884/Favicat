@@ -3,5 +3,29 @@
 :root {
   --color-beige: #ebebd3;
   --color-coral: #f78764;
+  --color-coral-muted: #ed7452;
+  --color-coral-saturated: #ff5624;
   --color-black: #333333;
+
+  --spacing-s: 10px;
+  --spacing-m: 20px;
+  --spacing-l: 30px;
+
+  --border-radius-s: 5px;
+  --border-radius-m: 15px;
+
+  --box-shadow: 0px 7px 15px 1px rgba(0, 0, 0, 0.46);
+
+  --content-width: 1300px;
+}
+
+body {
+  margin: 0;
+  color: var(--color-black);
+  font-family: 'Roboto', sans-serif;
+  background-color: var(--color-beige);
+}
+
+* {
+  box-sizing: border-box;
 }
