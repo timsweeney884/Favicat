@@ -5,9 +5,13 @@ import styles from './file-input.module.css';
 
 interface IFileInput {
   onUpload: (file: File) => void;
+  onSelectImage: () => void;
 }
 
-export const FileInput: React.FC<IFileInput> = ({ onUpload }) => {
+export const FileInput: React.FC<IFileInput> = ({
+  onUpload,
+  onSelectImage,
+}) => {
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [uploadedImgSrc, setUploadedImgSrc] = useState('');
 
@@ -28,6 +32,7 @@ export const FileInput: React.FC<IFileInput> = ({ onUpload }) => {
     const image = event.target.files?.[0];
 
     if (image) {
+      onSelectImage();
       setUploadedImgSrc(URL.createObjectURL(image));
     }
   };

@@ -14,6 +14,9 @@ export const Upload: React.FC = () => {
   const loading = useSelector(getLoading);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+  const onSelectImage = () => {
+    setApiError('');
+  };
 
   const onUpload = (file: File) => {
     dispatch(uploadImage(file))
@@ -30,9 +33,10 @@ export const Upload: React.FC = () => {
     return <Loader />;
   }
 
-  if (apiError) {
-    return <Error heading="Something went wrong!" message={apiError} />;
-  }
-
-  return <FileInput onUpload={onUpload} />;
+  return (
+    <>
+      <FileInput onUpload={onUpload} onSelectImage={onSelectImage} />
+      {apiError && <Error heading="Something went wrong!" message={apiError} />}
+    </>
+  );
 };

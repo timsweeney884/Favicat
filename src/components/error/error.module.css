@@ -5,7 +5,7 @@
   text-align: center;
   padding: var(--spacing-l);
   max-width: 700px;
-  margin: 0 auto;
+  margin: var(--spacing-m) auto;
 }
 
 .heading {
