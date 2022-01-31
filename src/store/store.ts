@@ -1,8 +1,10 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import { searchReducer } from './search/search.slice';
+import { imagesReducer } from './images/images.slice';
+import { uploadReducer } from './upload/upload.slice';
 
 export const store = configureStore({
   reducer: combineReducers({
-    search: searchReducer,
+    images: imagesReducer,
+    upload: uploadReducer
   }),
 });

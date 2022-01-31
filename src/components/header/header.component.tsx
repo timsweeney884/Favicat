@@ -16,7 +16,7 @@ export const Header: React.FC = () => (
         <nav>
           <ul className={styles.list}>
             {Object.values(APP_ROUTES).map(({ path, title }) => (
-              <li className={styles.listItem}>
+              <li key={`nav-link-${title}`} className={styles.listItem}>
                 <NavLink className={styles.navLink} to={path}>
                   {title}
                 </NavLink>

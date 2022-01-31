@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useAppDispatch } from '../../hooks/app-dispatch.hook';
-import { fetchImages } from '../../store/search/search.thunk';
-import * as searchSelectors from '../../store/search/search.selectors';
+import { fetchImages } from '../../store/images/images.thunk';
+import * as imagesSelectors from '../../store/images/images.selectors';
 import { ImagePanel } from '../../components/image-panel/image-panel.component';
 import { Grid } from '../../components/grid/grid.component';
 import { GridColumn } from '../../components/grid/grid-tem.component';
@@ -10,9 +10,9 @@ import { Loader } from '../../components/loader/loader.component';
 import { Error } from '../../components/error/error.component';
 
 export const MoreCats: React.FC = () => {
-  const loading = useSelector(searchSelectors.getLoading);
-  const error = useSelector(searchSelectors.getError);
-  const images = useSelector(searchSelectors.getImages);
+  const loading = useSelector(imagesSelectors.getLoading);
+  const error = useSelector(imagesSelectors.getError);
+  const images = useSelector(imagesSelectors.getPublicImages);
   const dispatch = useAppDispatch();
 
   const errorHeading = 'Something went wrong!';
@@ -30,14 +30,10 @@ export const MoreCats: React.FC = () => {
     return <Error heading={errorHeading} message={errorMessage} />;
   }
 
-  if (!images.length) {
-    return null;
-  }
-
   return (
     <Grid>
-      {images.map(({ url }) => (
-        <GridColumn>
+      {images.map(({ id, url }) => (
+        <GridColumn key={`image-${id}`}>
           <ImagePanel imgSrc={url} />
         </GridColumn>
       ))}

@@ -2,6 +2,7 @@
 
 :root {
   --color-beige: #ebebd3;
+  --color-beige-light: #f6f6dd;
   --color-coral: #f78764;
   --color-coral-muted: #ed7452;
   --color-coral-saturated: #ff5624;
@@ -22,6 +23,7 @@
 body {
   margin: 0;
   color: var(--color-black);
+  font-size: 1.125rem;
   font-family: 'Roboto', sans-serif;
   background-color: var(--color-beige);
 }

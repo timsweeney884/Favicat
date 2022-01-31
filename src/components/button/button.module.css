@@ -1,0 +1,16 @@
+.button {
+  cursor: pointer;
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--color-coral);
+  border: 2px solid var(--color-coral);
+  background-color: var(--color-beige);
+  padding: var(--spacing-s) var(--spacing-m);
+  border-radius: var(--border-radius-s);
+}
+
+.button:hover {
+  background-color: var(--color-coral);
+  color: var(--color-beige);
+}

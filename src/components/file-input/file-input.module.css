@@ -1,0 +1,31 @@
+.fileInput {
+  display: none;
+}
+
+.fileInputLabelContainer {
+  margin-bottom: var(--spacing-m);
+}
+
+.fileInputLabel {
+  display: inline-block;
+  cursor: pointer;
+  font-size: 2rem;
+  color: var(--color-coral);
+  border: 3px solid var(--color-coral);
+  border-radius: var(--border-radius-s);
+  background-color: var(--color-beige-light);
+  padding: var(--spacing-m);
+}
+
+.formContent {
+  text-align: center;
+}
+
+.previewImage {
+  width: 100%;
+  max-width: 320px;
+  display: block;
+  border-radius: var(--border-radius-m);
+  box-shadow: var(--box-shadow);
+  margin: 0 auto var(--spacing-l);
+}
