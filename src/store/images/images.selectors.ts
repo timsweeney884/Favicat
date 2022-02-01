@@ -1,7 +1,8 @@
 import { createSelector } from '@reduxjs/toolkit';
-import { ImageWithVote } from '../../types/image-wth-vote';
 import { RootState } from '../../types/root-state';
+import { getFavorites } from '../favorites/favorites.selectors';
 import { getVotes } from '../vote/vote.selectors';
+import { ImageWithVoteandFavorite } from '../../types/image-wth-vote-and-favorite';
 
 const imageState = (state: RootState) => state.images;
 
@@ -12,21 +13,13 @@ export const getLoading = createSelector(
 
 export const getError = createSelector(imageState, (images) => images.error);
 
-export const getPublicImages = createSelector(
-  imageState,
-  (images) => images.publicImages
-);
+export const getImages = createSelector(imageState, (images) => images.images);
 
-export const getUploadedImages = createSelector(
-  imageState,
+export const getUploadedImagesWithVotesAndFavorites = createSelector(
+  getImages,
   getVotes,
-  (images) => images.uploadedImages
-);
-
-export const getUploadedImagesWithVotes = createSelector(
-  getUploadedImages,
-  getVotes,
-  (images, votes): ImageWithVote[] => {
+  getFavorites,
+  (images, votes, favorites): ImageWithVoteandFavorite[] => {
     return images.map((image) => {
       const voteCount = votes
         .filter((vote) => image.id === vote.imgId)
@@ -36,9 +29,14 @@ export const getUploadedImagesWithVotes = createSelector(
           0
         );
 
+      const favoriteId = favorites.find(
+        (favorite) => favorite.imgId === image.id
+      )?.favoriteId;
+
       return {
         ...image,
         voteCount,
+        favoriteId,
       };
     });
   }

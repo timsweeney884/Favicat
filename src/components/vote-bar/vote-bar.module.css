@@ -17,7 +17,7 @@
 }
 
 .voteCount {
-  font-size: 1.25rem;
+  font-size: var(--font-size-s);
   color: var(--color-beige);
   margin: 0 var(--spacing-s);
 }

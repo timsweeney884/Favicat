@@ -1,18 +1,15 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { fetchImages } from './images.thunk';
 import { Image } from '../../types/image';
-import { ApiImage } from '../../types/api/api-image';
 
 export interface ImagesState {
+  images: Image[];
   loading: boolean;
   error: boolean;
-  publicImages: Image[];
-  uploadedImages: Image[];
 }
 
 const initialState: ImagesState = {
-  publicImages: [],
-  uploadedImages: [],
+  images: [],
   loading: false,
   error: false,
 };
@@ -32,21 +29,9 @@ export const imagesSlice = createSlice({
     });
     builder.addCase(
       fetchImages.fulfilled,
-      (
-        state,
-        action: PayloadAction<{ images: ApiImage[]; isPublic: boolean }>
-      ) => {
+      (state, action: PayloadAction<{ images: Image[] }>) => {
         state.loading = false;
-        state.error = false;
-
-        const images = action.payload.images.map(({ url, id }) => ({
-          url,
-          id,
-        }));
-
-        action.payload.isPublic
-          ? (state.publicImages = images)
-          : (state.uploadedImages = images);
+        state.images = action.payload.images;
       }
     );
   },

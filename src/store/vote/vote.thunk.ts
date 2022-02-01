@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { makeApiRequest } from '../../services/api/api.service';
+import { makeApiRequest } from '../../services/api.service';
 import { ApiVote } from '../../types/api/api-vote';
 import { ApiVoteSubmit } from '../../types/api/api-vote-submit';
 import { Vote } from '../../types/vote';
@@ -32,6 +32,9 @@ export const fetchVotes = createAsyncThunk('vote/fetchVotes', async () => {
   const response = await makeApiRequest({
     path: 'votes',
     method: 'GET',
+    searchParams: {
+      limit: 1000,
+    },
   });
 
   const votes: ApiVote[] = await response.json();

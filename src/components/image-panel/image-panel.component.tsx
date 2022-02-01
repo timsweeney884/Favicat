@@ -4,12 +4,18 @@ import styles from './image-panel.module.css';
 interface ImagePanelProps {
   imgSrc: string;
   voteCount: number;
-  onVote?: (value: number) => void;
+  isCurrentFavorite: boolean;
+  onVote: (value: number) => void;
+  onFavorite: () => void;
+  onUnfavorite: () => void;
 }
 
 export const ImagePanel: React.FC<ImagePanelProps> = ({
   imgSrc,
   voteCount,
+  isCurrentFavorite,
+  onFavorite,
+  onUnfavorite,
   onVote = () => {},
 }: ImagePanelProps) => {
   return (
@@ -19,7 +25,13 @@ export const ImagePanel: React.FC<ImagePanelProps> = ({
         className={styles.imagePanel}
       >
         <div className={styles.voteBarContainer}>
-          <VoteBar onVote={onVote} voteCount={voteCount} />
+          <VoteBar
+            isCurrentFavorite={isCurrentFavorite}
+            onUnfavorite={onUnfavorite}
+            onFavorite={onFavorite}
+            onVote={onVote}
+            voteCount={voteCount}
+          />
         </div>
       </div>
     </>

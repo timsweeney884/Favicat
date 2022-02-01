@@ -19,7 +19,7 @@
 .labelText {
   display: block;
   font-weight: 700;
-  font-size: 1.5rem;
+  font-size: var(--font-size-m);
 }
 
 .formContent {
@@ -41,6 +41,6 @@
   }
 
   .labelText {
-    font-size: 2.5rem;
+    font-size: var(--font-size-l);
   }
 }

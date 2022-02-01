@@ -1,20 +1,21 @@
-import { BASE_URL, API_KEY } from '../../constants/api.constants';
-import { SearchParams } from '../../types/search-params';
-import { getQueryString } from '../../utils/get-query-string/get-query-string';
+import { BASE_URL, API_KEY } from '../constants/api.constants';
+import { SearchParams } from '../types/search-params';
+import { getQueryString } from '../utils/get-query-string';
 
 interface IMakeApiRequest {
   path: string;
   isJSON?: boolean;
   body?: RequestInit['body'];
-  method?: 'GET' | 'POST';
+  method?: 'GET' | 'POST' | 'DELETE';
+  withSubId?: string;
   searchParams?: SearchParams;
 }
 
 export const makeApiRequest = ({
   path,
+  body,
   method = 'GET',
   searchParams,
-  body,
   isJSON = true,
 }: IMakeApiRequest): Promise<Response> => {
   const queryString = getQueryString(searchParams);

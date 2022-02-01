@@ -7,8 +7,4 @@ export const APP_ROUTES = {
     path: '/upload',
     title: 'Upload',
   },
-  MORE_CATS: {
-    path: '/more-cats',
-    title: 'More cats',
-  },
 };

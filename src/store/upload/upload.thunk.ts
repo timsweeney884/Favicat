@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { makeApiRequest } from '../../services/api/api.service';
+import { makeApiRequest } from '../../services/api.service';
 import { ApiUpload } from '../../types/api/api-upload';
 import { ApiError } from '../../types/api/api-error';
 

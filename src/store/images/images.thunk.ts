@@ -1,24 +1,19 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { makeApiRequest } from '../../services/api/api.service';
+import { makeApiRequest } from '../../services/api.service';
 import { ApiImage } from '../../types/api/api-image';
-import { ImageType } from '../../types/image-type';
 
-export const fetchImages = createAsyncThunk(
-  'images/getImages',
-  async (imageType: ImageType = 'Public') => {
-    const isPublic = imageType === 'Public';
-    const path = imageType === 'Public' ? 'images/search' : 'images';
+export const fetchImages = createAsyncThunk('images/getImages', async () => {
+  const response: Response = await makeApiRequest({
+    path: 'images',
+    searchParams: { limit: 20 },
+  });
 
-    const response: Response = await makeApiRequest({
-      path,
-      searchParams: { limit: 20 },
-    });
+  const images: ApiImage[] = await response.json();
 
-    const images: ApiImage[] = await response.json();
-
-    return {
-      images,
-      isPublic,
-    };
-  }
-);
+  return {
+    images: images.map(({ url, id }) => ({
+      url,
+      id,
+    })),
+  };
+});
