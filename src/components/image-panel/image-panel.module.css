@@ -24,6 +24,13 @@
   animation: 1s linear infinite spin;
 }
 
+.voteBarContainer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
 @keyframes spin {
   0% {
     transform: rotate(0deg);

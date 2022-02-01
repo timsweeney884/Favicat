@@ -1,0 +1,23 @@
+.voteBar {
+  display: flex;
+  align-items: center;
+  padding: var(--spacing-s);
+  background: var(--transparent-black);
+}
+
+.voteColumn {
+  display: flex;
+  flex: 1 1 auto;
+  align-items: center;
+}
+
+.favoriteColumn {
+  flex: 0 1 auto;
+  text-align: right;
+}
+
+.voteCount {
+  font-size: 1.25rem;
+  color: var(--color-beige);
+  margin: 0 var(--spacing-s);
+}

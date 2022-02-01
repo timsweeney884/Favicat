@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { makeApiRequest } from '../../services/api/api.service';
 import { ApiUpload } from '../../types/api/api-upload';
-import { ApiUploadError } from '../../types/api/api-upload-error';
+import { ApiError } from '../../types/api/api-error';
 
 export const uploadImage = createAsyncThunk(
   'upload/uploadImage',
@@ -11,6 +11,7 @@ export const uploadImage = createAsyncThunk(
     body.append('file', image);
 
     const response = await makeApiRequest({
+      isJSON: false,
       path: 'images/upload',
       method: 'POST',
       body,
@@ -21,7 +22,7 @@ export const uploadImage = createAsyncThunk(
 
       return data;
     } else {
-      const error: ApiUploadError = await response.json();
+      const error: ApiError = await response.json();
 
       throw error;
     }

@@ -4,6 +4,7 @@ import { getQueryString } from '../../utils/get-query-string/get-query-string';
 
 interface IMakeApiRequest {
   path: string;
+  isJSON?: boolean;
   body?: RequestInit['body'];
   method?: 'GET' | 'POST';
   searchParams?: SearchParams;
@@ -14,6 +15,7 @@ export const makeApiRequest = ({
   method = 'GET',
   searchParams,
   body,
+  isJSON = true,
 }: IMakeApiRequest): Promise<Response> => {
   const queryString = getQueryString(searchParams);
   const requestUrl = `${BASE_URL}/${path}${queryString}`;
@@ -22,6 +24,7 @@ export const makeApiRequest = ({
     method,
     headers: {
       'x-api-key': API_KEY,
+      ...(isJSON ? { 'Content-Type': 'application/json' } : {}),
     },
     body,
   }).then((response) => {

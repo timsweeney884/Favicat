@@ -7,6 +7,7 @@
   --color-coral-muted: #ed7452;
   --color-coral-saturated: #ff5624;
   --color-black: #333333;
+  --transparent-black: rgba(0, 0, 0, 0.5);
 
   --spacing-s: 10px;
   --spacing-m: 20px;

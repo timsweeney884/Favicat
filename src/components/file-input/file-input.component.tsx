@@ -45,7 +45,7 @@ export const FileInput: React.FC<IFileInput> = ({
             <span className={styles.labelText}>
               Click here to choose a file
             </span>
-            <MdUpload size={50} color="#f78764" />
+            <MdUpload size={50} />
             <input
               onChange={onChange}
               className={styles.fileInput}

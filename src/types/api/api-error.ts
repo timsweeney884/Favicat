@@ -1,4 +1,4 @@
-export interface ApiUploadError {
+export interface ApiError {
   level: string;
   message: string;
   status: number;

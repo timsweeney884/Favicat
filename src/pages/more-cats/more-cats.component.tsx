@@ -34,7 +34,7 @@ export const MoreCats: React.FC = () => {
     <Grid>
       {images.map(({ id, url }) => (
         <GridColumn key={`image-${id}`}>
-          <ImagePanel imgSrc={url} />
+          {/* <ImagePanel imgSrc={url} /> */}
         </GridColumn>
       ))}
     </Grid>

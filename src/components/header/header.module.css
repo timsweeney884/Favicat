@@ -36,12 +36,13 @@
   list-style: none;
   padding: 0;
   margin: 0;
-  display: flex;
   margin: 0 calc(var(--spacing-s) - var(--spacing-s) * 2);
 }
 
 .listItem {
-  margin: 0 var(--spacing-s);
+  display: block;
+  text-align: center;
+  margin: 0 var(--spacing-s) var(--spacing-s);
 }
 
 .navLink {
@@ -59,6 +60,10 @@
 }
 
 @media (min-width: 576px) {
+  .list {
+    display: flex;
+  }
+
   .headerContent {
     display: flex;
     align-items: center;
@@ -74,5 +79,11 @@
 
   .navColumn {
     justify-content: flex-end;
+  }
+
+  .listItem {
+    display: block;
+    text-align: center;
+    margin: 0 var(--spacing-s);
   }
 }
