@@ -29,8 +29,12 @@ export const Home: React.FC = () => {
   const voteIsDeleting = useSelector(voteSelectors.getVoteIsDeleting);
   const votesError = useSelector(voteSelectors.getError);
   const favoritesLoading = useSelector(favoritesSelectors.getLoading);
-  const favoriteIsSubmitting = useSelector(favoritesSelectors.getFavoriteIsSubmitting);
-  const favoriteIsDeleting = useSelector(favoritesSelectors.getFavoriteIsDeleting);
+  const favoriteIsSubmitting = useSelector(
+    favoritesSelectors.getFavoriteIsSubmitting
+  );
+  const favoriteIsDeleting = useSelector(
+    favoritesSelectors.getFavoriteIsDeleting
+  );
   const favoritesError = useSelector(favoritesSelectors.getError);
   const dispatch = useAppDispatch();
 
@@ -75,11 +79,13 @@ export const Home: React.FC = () => {
   };
 
   const onDeleteVote = (imgId: string) => (voteValue: number) => {
-    dispatch(deleteVote({
-      imgId,
-      voteValue,
-    }));
-  }
+    dispatch(
+      deleteVote({
+        imgId,
+        voteValue,
+      })
+    );
+  };
 
   const onUnfavorite = (favoriteId?: number) => () => {
     favoriteId && dispatch(deleteFavorite(favoriteId));
@@ -87,25 +93,27 @@ export const Home: React.FC = () => {
 
   return (
     <Grid>
-      {images.map(({ id, url, isUpvote, isDownVote, favoriteId, voteCount }) => (
-        <GridColumn key={`image-${id}`}>
-          <ImagePanel
-            imgSrc={url}
-            isCurrentUpVote={isUpvote}
-            isCurrentDownVote={isDownVote}
-            isCurrentFavorite={Boolean(favoriteId)}
-            voteCount={voteCount}
-            voteIsSubmitting={voteIsSubmitting}
-            voteIsDeleting={voteIsDeleting}
-            favoriteIsSubmitting={favoriteIsSubmitting}
-            favoriteIsDeleting={favoriteIsDeleting}
-            onDeleteVote={onDeleteVote(id)}
-            onVote={onVote(id)}
-            onUnfavorite={onUnfavorite(favoriteId)}
-            onFavorite={onFavorite(id)}
-          />
-        </GridColumn>
-      ))}
+      {images.map(
+        ({ id, url, isUpvote, isDownVote, favoriteId, voteCount }) => (
+          <GridColumn key={`image-${id}`}>
+            <ImagePanel
+              imgSrc={url}
+              isCurrentUpVote={isUpvote}
+              isCurrentDownVote={isDownVote}
+              isCurrentFavorite={Boolean(favoriteId)}
+              voteCount={voteCount}
+              voteIsSubmitting={voteIsSubmitting}
+              voteIsDeleting={voteIsDeleting}
+              favoriteIsSubmitting={favoriteIsSubmitting}
+              favoriteIsDeleting={favoriteIsDeleting}
+              onDeleteVote={onDeleteVote(id)}
+              onVote={onVote(id)}
+              onUnfavorite={onUnfavorite(favoriteId)}
+              onFavorite={onFavorite(id)}
+            />
+          </GridColumn>
+        )
+      )}
     </Grid>
   );
 };

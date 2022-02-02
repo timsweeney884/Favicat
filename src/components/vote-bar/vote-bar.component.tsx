@@ -3,6 +3,7 @@ import { MdFavorite, MdThumbDown, MdThumbUp } from 'react-icons/md';
 import styles from './vote-bar.module.css';
 import { IconButton } from '../icon-button/icon-button.component';
 import { Loader } from '../loader/loader.component';
+import { VoteStatus } from '../../types/vote-status';
 
 interface VoteBarProps {
   voteCount: number;
@@ -17,11 +18,6 @@ interface VoteBarProps {
   onDeleteVote: (value: number) => void;
   onFavorite: () => void;
   onUnfavorite: () => void;
-}
-
-interface VoteStatus {
-  up: boolean;
-  down: boolean;
 }
 
 export const VoteBar: React.FC<VoteBarProps> = ({
