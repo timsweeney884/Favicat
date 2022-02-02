@@ -43,7 +43,7 @@ export const fetchFavorites = createAsyncThunk(
 
     return favorites.map((favorite) => ({
       favoriteId: favorite.id,
-      imgId: favorite['image_id'],
+      imgId: favorite.image_id,
     }));
   }
 );

@@ -17,3 +17,13 @@ export const getFavorites = createSelector(
   favoritesState,
   (favorites) => favorites.favorites
 );
+
+export const getFavoriteIsSubmitting = createSelector(
+  favoritesState,
+  (favorites) => favorites.submittingFavorite
+);
+
+export const getFavoriteIsDeleting = createSelector(
+  favoritesState,
+  (favorites) => favorites.deletingFavorite
+);

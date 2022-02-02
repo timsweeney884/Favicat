@@ -1,5 +1,6 @@
 .loaderContainer {
   text-align: center;
+  display: block;
 }
 
 .loaderDot {
@@ -13,6 +14,13 @@
   animation-duration: 1s;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
+}
+
+.loaderDotSmall {
+  --loader-dot-size: 3px;
+  margin: 0 var(--spacing-xs);
+  height: var(--loader-dot-size);
+  width: var(--loader-dot-size);
 }
 
 .loaderDotOne {

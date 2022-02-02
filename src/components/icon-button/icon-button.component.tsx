@@ -1,11 +1,12 @@
 import { MouseEvent } from 'react';
 import cx from 'classnames';
-import styles from './icon-button.module.css';
 import { IconType } from 'react-icons';
+import styles from './icon-button.module.css';
 
 interface IconButtonProps {
   onClick: () => void;
   Icon: IconType;
+  disabled?: boolean;
   isActive?: boolean;
 }
 
@@ -13,10 +14,13 @@ export const IconButton: React.FC<IconButtonProps> = ({
   onClick,
   isActive,
   Icon,
+  disabled,
 }) => {
   const handleClick = (e: MouseEvent) => {
-    e.preventDefault();
-    onClick();
+    if (!disabled) {
+      e.preventDefault();
+      onClick();
+    }
   };
 
   return (

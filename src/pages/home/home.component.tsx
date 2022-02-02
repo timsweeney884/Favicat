@@ -7,7 +7,7 @@ import { Error } from '../../components/error/error.component';
 import { Grid } from '../../components/grid/grid.component';
 import { GridColumn } from '../../components/grid/grid-tem.component';
 import { ImagePanel } from '../../components/image-panel/image-panel.component';
-import { fetchVotes, voteImage } from '../../store/vote/vote.thunk';
+import { deleteVote, fetchVotes, voteImage } from '../../store/vote/vote.thunk';
 
 import * as imagesSelectors from '../../store/images/images.selectors';
 import * as voteSelectors from '../../store/vote/vote.selectors';
@@ -25,8 +25,12 @@ export const Home: React.FC = () => {
     imagesSelectors.getUploadedImagesWithVotesAndFavorites
   );
   const votesLoading = useSelector(voteSelectors.getLoading);
+  const voteIsSubmitting = useSelector(voteSelectors.getVoteIsSubmitting);
+  const voteIsDeleting = useSelector(voteSelectors.getVoteIsDeleting);
   const votesError = useSelector(voteSelectors.getError);
   const favoritesLoading = useSelector(favoritesSelectors.getLoading);
+  const favoriteIsSubmitting = useSelector(favoritesSelectors.getFavoriteIsSubmitting);
+  const favoriteIsDeleting = useSelector(favoritesSelectors.getFavoriteIsDeleting);
   const favoritesError = useSelector(favoritesSelectors.getError);
   const dispatch = useAppDispatch();
 
@@ -70,18 +74,32 @@ export const Home: React.FC = () => {
     );
   };
 
+  const onDeleteVote = (imgId: string) => (voteValue: number) => {
+    dispatch(deleteVote({
+      imgId,
+      voteValue,
+    }));
+  }
+
   const onUnfavorite = (favoriteId?: number) => () => {
     favoriteId && dispatch(deleteFavorite(favoriteId));
   };
 
   return (
     <Grid>
-      {images.map(({ id, url, favoriteId, voteCount }) => (
+      {images.map(({ id, url, isUpvote, isDownVote, favoriteId, voteCount }) => (
         <GridColumn key={`image-${id}`}>
           <ImagePanel
             imgSrc={url}
+            isCurrentUpVote={isUpvote}
+            isCurrentDownVote={isDownVote}
             isCurrentFavorite={Boolean(favoriteId)}
             voteCount={voteCount}
+            voteIsSubmitting={voteIsSubmitting}
+            voteIsDeleting={voteIsDeleting}
+            favoriteIsSubmitting={favoriteIsSubmitting}
+            favoriteIsDeleting={favoriteIsDeleting}
+            onDeleteVote={onDeleteVote(id)}
             onVote={onVote(id)}
             onUnfavorite={onUnfavorite(favoriteId)}
             onFavorite={onFavorite(id)}

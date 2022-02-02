@@ -9,12 +9,16 @@ import {
 export interface FavoriteState {
   loading: boolean;
   error: boolean;
+  submittingFavorite: boolean;
+  deletingFavorite: boolean;
   favorites: Favorite[];
 }
 
 const initialState: FavoriteState = {
   loading: false,
   error: false,
+  deletingFavorite: false,
+  submittingFavorite: false,
   favorites: [],
 };
 
@@ -38,23 +42,30 @@ export const favoriteSlice = createSlice({
         state.favorites = action.payload;
       }
     );
+
     builder.addCase(favoriteImage.pending, (state) => {
       state.error = false;
+      state.submittingFavorite = true;
     });
     builder.addCase(favoriteImage.rejected, (state) => {
       state.error = true;
+      state.submittingFavorite = false;
     });
     builder.addCase(
       favoriteImage.fulfilled,
       (state, action: PayloadAction<Favorite>) => {
         state.favorites.push(action.payload);
+        state.submittingFavorite = false;
       }
     );
+
     builder.addCase(deleteFavorite.pending, (state) => {
       state.error = false;
+      state.deletingFavorite = true;
     });
     builder.addCase(deleteFavorite.rejected, (state) => {
       state.error = true;
+      state.deletingFavorite = false;
     });
     builder.addCase(
       deleteFavorite.fulfilled,
@@ -66,6 +77,8 @@ export const favoriteSlice = createSlice({
         if (index !== -1) {
           state.favorites.splice(index, 1);
         }
+
+        state.deletingFavorite = false;
       }
     );
   },

@@ -20,4 +20,5 @@
   font-size: var(--font-size-s);
   color: var(--color-beige);
   margin: 0 var(--spacing-s);
+  transition: 0.4s ease color;
 }

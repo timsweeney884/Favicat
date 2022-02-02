@@ -7,6 +7,7 @@
   --color-coral-muted: #ed7452;
   --color-coral-saturated: #ff5624;
   --color-black: #333333;
+  --color-grey: #8e8e8e;
   --transparent-black: rgba(0, 0, 0, 0.5);
 
   --font-family: 'Roboto', sans-serif;
@@ -15,6 +16,7 @@
   --font-size-m: 1.5rem;
   --font-size-l: 2.5rem;
 
+  --spacing-xs: 3px;
   --spacing-s: 10px;
   --spacing-m: 20px;
   --spacing-l: 30px;

@@ -33,10 +33,16 @@ export const getUploadedImagesWithVotesAndFavorites = createSelector(
         (favorite) => favorite.imgId === image.id
       )?.favoriteId;
 
+      const vote = votes
+        .filter((vote) => vote.current)
+        .find((vote) => vote.imgId === image.id);
+
       return {
         ...image,
         voteCount,
         favoriteId,
+        isUpvote: vote?.value === 1,
+        isDownVote: vote?.value === 0,
       };
     });
   }
